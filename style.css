@@ -1,0 +1,489 @@
+body, html {
+  width: 100%;
+  overflow-x: hidden;
+}
+:root {
+  --primary: rgb(
+    173,
+    173,
+    173
+  ); /* Variabel warna utama yang bisa dipanggil dengan var(--primary) */
+  --bg: rgb(0, 0, 0); /* Variabel untuk latar belakang utama */
+}
+
+/* Reset dan pengaturan dasar untuk semua elemen */
+* {
+  font-family: "poppins", sans-serif; /* Jenis font */
+  margin: 0; /* Menghilangkan margin bawaan */
+  padding: 0; /* Menghilangkan padding bawaan */
+  box-sizing: border-box; /* Agar padding dan border tidak menambah ukuran elemen */
+  outline: none; /* Menghilangkan garis luar saat elemen difokuskan */
+  border: none; /* Menghilangkan border bawaan */
+  text-decoration: none; /* Menghilangkan garis bawah pada link */
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Style dasar untuk body */
+body {
+  font-family: "poppins", sans-serif; /* Font untuk seluruh body */
+  background-color: var(--bg); /* Latar belakang dari variabel */
+  color: rgb(255, 255, 255); /* Warna teks putih */
+}
+
+/* NAVBAR START */
+.navbar {
+  display: flex; /* Menyusun konten navbar secara horizontal */
+  justify-content: space-between; /* Membagi elemen ke kanan dan kiri */
+  align-items: center; /* Menyelaraskan secara vertikal */
+  padding: 1.4rem 7%; /* Padding atas-bawah dan kiri-kanan */
+  background-color: black; /* Warna latar navbar */
+  border-bottom: 1px solid var(--primary); /* Garis bawah */
+
+  position: fixed; /* Menjadikan navbar tetap di posisi atas saat discroll */
+  top: 0; /* Posisi dari atas */
+  left: 0; /* Posisi dari kiri */
+  right: 0; /* Posisi dari kanan */
+  z-index: 9999; /* Prioritas tampilan tertinggi agar selalu di atas */
+}
+
+.navbar .navbarlogo {
+  font-size: 2rem; /* Ukuran huruf */
+  font-weight: 700; /* Tebal huruf */
+  color: aliceblue; /* Warna teks */
+  font-style: italic; /* Font miring */
+}
+
+.navbar .navbarlogo span {
+  color: aqua; /* Warna khusus pada elemen span di logo */
+}
+
+.navbar .navbar-nav a {
+  color: burlywood; /* Warna teks menu */
+  display: inline-block; /* Agar menu sejajar horizontal */
+  font-size: 1.4rem; /* Ukuran teks */
+  margin: 0 1rem; /* Jarak antar menu */
+  font-weight: 600; /* Ketebalan font */
+}
+
+.navbar .navbar-nav a:hover {
+  color: goldenrod; /* Warna saat hover */
+}
+
+.navbar .navbar-nav a::after {
+  content: ""; /* Membuat elemen pseudo kosong */
+  display: block; /* Agar bisa diberi tinggi/garis */
+  padding-bottom: 0.5rem; /* Tinggi area garis bawah */
+  border-bottom: 0.1rem solid var(--primary); /* Garis bawah */
+  transform: scaleX(0); /* Menyembunyikan garis dengan skala */
+  transition: 0.2s linear; /* Efek transisi halus */
+}
+
+.navbar .navbar-nav a:hover::after {
+  transform: scaleX(0.5); /* Saat hover, munculkan garis setengah */
+}
+
+.navbar .navbar-extra a {
+  color: var(--primary); /* Warna ikon tambahan */
+ margin-right: 1rem;
+}
+
+.navbar .navbar-extra a:hover {
+  color: dimgray; /* Warna saat hover ikon tambahan */
+}
+
+#menu {
+  display: none; /* Menu disembunyikan secara default, hanya muncul di mobile */
+}
+
+/* HERO SECTION */
+.hero {
+  min-height: 100vh; /* Tinggi minimum 100% layar */
+  display: flex; /* Menyusun elemen horizontal */
+  align-items: center; /* Posisikan tengah secara vertikal */
+  background-image: url("img/imgfc2.jpg"); /* Gambar latar belakang */
+  background-repeat: no-repeat; /* Tidak mengulang gambar */
+  background-size: cover; /* Menutupi seluruh area */
+  background-position: center; /* Fokus gambar di tengah */
+  position: relative; /* Supaya bisa diberi overlay dengan ::after */
+}
+
+.hero::after {
+  content: ""; /* Elemen kosong */
+  display: block;
+  position: absolute; /* Diletakkan di atas gambar */
+  width: 100%; /* Lebar penuh */
+  height: 16%; /* Tinggi bagian bawah */
+  bottom: 0; /* Menempel di bawah */
+  background: linear-gradient(
+    0deg,
+    rgba(1, 1, 3, 1) 8%,
+    rgba(255, 255, 255, 0) 65%
+  ); /* Efek gradasi bayangan */
+}
+
+.hero .content {
+  padding: 1.4rem; /* Ruang dalam */
+  max-width: 60rem; /* Lebar maksimal */
+}
+
+.hero .content h1 {
+  margin-top: 50%; /* Jarak dari atas */
+  color: rgba(255, 255, 255, 0.842); /* Warna teks */
+  font-size: 4em; /* Ukuran besar */
+  text-shadow: 1px 1px 3px rgb(1, 1, 3, 0.5); /* Efek bayangan teks */
+  line-height: 1.2; /* Jarak antar baris */
+}
+
+.hero .content h1 span {
+  color: rgb(253, 252, 251); /* Warna teks span */
+}
+
+.hero .content h1 span2 {
+  color: rgb(
+    124,
+    170,
+    201
+  ); /* Warna teks span2 (tidak valid karena tag span2 tidak ada di HTML) */
+}
+
+.hero .content p {
+  font-size: 1.6rem;
+  color: aliceblue;
+  margin-top: 0.8rem;
+  line-height: 1;
+  font-weight: 300;
+}
+
+.hero .content .ct {
+  margin-top: 1rem;
+  display: inline-block;
+  padding: 1rem 3rem;
+  font-size: 1.5rem;
+  color: bisque;
+  background-color: cornflowerblue;
+  border-radius: 0.5rem;
+  box-shadow: 1px 1px 3px rgb(1, 1, 3, 0.5);
+}
+
+/* ABOUT, MENU, CONTACT SECTION */
+.about,
+.menu1,
+.contact {
+  padding: 10rem 7% 1.4rem; /* Atas, kanan-kiri, bawah */
+}
+
+.about h2,
+.menu1 h2,
+.contact h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+}
+
+.about h2 span,
+.menu1 h2 span,
+.contact h2 span {
+  color: gold;
+}
+
+.about .row,
+.menu1 .row,
+.menu1 .row1,
+.menu1 .row2,
+.menu1 .row3,
+.menu1 .row4 {
+  display: flex;
+  margin-top: 4rem;
+}
+
+.about .row .about-img,
+.menu1 .row .imgmenu,
+.menu1 .row1 .imgmenu2,
+.menu1 .row2 .imgmenu3,
+.menu1 .row3 .imgmenu4,
+.menu1 .row4 .imgmenu5 {
+  flex: 1 1 45rem; /* Ukuran fleksibel */
+}
+
+.about .row .about-img img,
+.menu1 .row .imgmenu img,
+.menu1 .row1 .imgmenu2 img,
+.menu1 .row2 .imgmenu3 img,
+.menu1 .row3 .imgmenu4 img,
+.menu1 .row4 .imgmenu5 img {
+  width: 400px;
+  margin-right: 3rem;
+  text-align: center;
+  border-radius: 5%;
+}
+
+.contact p {
+  text-align: center;
+  max-width: 55rem;
+  margin: auto;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+.about .row .content h3,
+.menu1 .row .menu-card h3,
+.menu1 .row1 .fotocopy h3,
+.menu1 .row2 .jasaketik h3,
+.menu1 .row3 .alat h3,
+.menu1 .row4 .emas h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.about .row .content p,
+.menu1 .row .menu-card p,
+.menu1 .row1 .fotocopy p,
+.menu1 .row2 .jasaketik p,
+.menu1 .row3 .alat p,
+.menu1 .row4 .emas p {
+  margin-bottom: 0.8rem;
+  font-size: 1.3rem;
+  font-weight: 300;
+  line-height: 1.6rem;
+}
+
+/* CONTACT FORM */
+.contact .row {
+  display: flex;
+  margin-top: 2rem;
+  background-color: rgb(70, 67, 67);
+}
+
+.contact .row .map {
+  flex: 1 1 45rem;
+  width: 100%;
+  object-fit: cover; /* Menyesuaikan isi tanpa merusak rasio */
+}
+
+.contact .row form {
+  flex: 1 1 45rem;
+  padding: 5rem 2rem;
+  text-align: center;
+}
+
+.contact .row form .inputan {
+  display: flex;
+  align-items: center;
+  margin-top: 2rem;
+  background-color: black;
+  border: 1px solid #eee;
+  padding-left: 2rem;
+}
+
+.contact .row form .inputan input {
+  width: 100%;
+  padding: 2rem;
+  font-size: 1.7rem;
+  background: none;
+  color: #fff;
+}
+
+.contact .row form .btn {
+  margin-top: 3rem;
+  display: inline-block;
+  padding: 1rem 3rem;
+  font-size: 1.7rem;
+  color: #fff;
+  background-color: slategrey;
+}
+
+/* FOOTER */
+footer {
+  background-color:darkcyan;
+  text-align: center;
+  padding: 1rem 0 5rem;
+  margin-top: 3rem;
+}
+
+footer .social {
+  padding: 1rem;
+}
+
+ footer .social a {
+  color: #eee;
+  margin: 1rem;
+   display: inline-flex;
+  align-items: center; /* Vertikal align antara ikon dan teks */
+  gap: 6px; /* Jarak antara ikon dan teks, bisa disesuaikan */
+  text-decoration: none;
+  color: inherit;
+ }
+
+ footer .social a:hover{
+  color: black;
+ }
+
+ footer .credit a {
+color: coral;
+font-weight: 700;
+width: 100%;
+ }
+
+
+
+
+
+
+
+
+
+
+/* MEDIA QUERY UNTUK RESPONSIVE */
+
+/* Laptop */
+@media (max-width: 1366px) {
+  html {
+    font-size: 75%; /* Menyesuaikan ukuran font */
+  }
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+  html {
+    font-size: 62%; /* Ukuran font lebih kecil */
+  }
+
+  #menu {
+    display: inline-block; /* Tampilkan tombol menu */
+  }
+
+  .navbar .navbar-nav {
+    position: absolute;
+    top: 100%;
+    right: -100%; /* Sembunyikan dari layar */
+    background-color: rgb(0, 0, 0);
+    width: 30rem;
+    height: 45vh;
+    transition: 0.7s;
+  }
+
+  .navbar .navbar-nav.active {
+    right: 0; /* Tampilkan saat aktif */
+  }
+
+  .navbar .navbar-nav a {
+    color: burlywood;
+    display: block;
+    margin: 1.5rem;
+    padding: 0.5rem;
+    font-size: 2rem;
+  }
+
+  .navbar .navbar-nav a::after {
+    transform-origin: 0 0; /* Animasi garis mulai dari kiri */
+  }
+
+  .about .row,
+  .menu1 .row,
+  .menu1 .row1,
+  .menu1 .row2,
+  .menu1 .row3,
+  .menu1 .row4 {
+    flex-wrap: wrap; /* Susun vertikal di layar kecil */
+  }
+
+  .about .row .about-img img,
+  .menu1 .row .imgmenu img,
+  .menu1 .row1 .imgmenu2 img,
+  .menu1 .row2 .imgmenu3 img,
+  .menu1 .row3 .imgmenu4 img,
+  .menu1 .row3 .imgmenu5 img {
+    height: 24rem;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .about .row .content h3,
+  .menu1 .row2 .jasaketik h3,
+  .menu1 .row1 .fotocopy h3,
+  .menu1 .row .menu-card h3,
+  .menu1 .row3 .alat h3,
+  .menu1 .row4 .emas h3 {
+    margin-bottom: 1rem;
+    font-size: 2rem;
+  }
+
+  .about .row .content p,
+  .menu1 .row2 .jasaketik p,
+  .menu1 .row1 .fotocopy p,
+  .menu1 .row .menu-card p,
+  .menu1 .row3 .alat p,
+  .menu1 .row4 .emas p {
+    font-size: 1.5rem;
+  }
+
+  .contact .row {
+    flex-wrap: wrap;
+  }
+
+  .contact .row .map {
+    height: 30rem;
+  }
+
+  .contact .row form {
+    padding-top: 0;
+  }
+}
+
+/* Handphone */
+@media (max-width: 450px) {
+   .about,
+  .menu1,
+  .contact {
+    padding: 5rem 2rem 2rem;
+  }
+
+  .about h2,
+  .menu1 h2,
+  .contact h2 {
+    font-size: 2rem;
+  }
+  .hero .content {
+    max-width: 100%;
+    padding: 1rem 2rem;
+  }
+
+  .hero .content h1 {
+    font-size: 2.5rem;
+    margin-top: 30%;
+  }
+
+  .hero .content p {
+    font-size: 1.3rem;
+  }
+  .contact .row {
+    flex-direction: column;
+  }
+
+  .contact .row form,
+  .contact .row .map {
+    width: 100%;
+  }
+
+  .contact .row form {
+    padding: 2rem;
+  }
+  footer {
+    padding: 1rem;
+  }
+  .about .row .about-img img,
+  .menu1 .row .imgmenu img,
+  .menu1 .row1 .imgmenu2 img,
+  .menu1 .row2 .imgmenu3 img,
+  .menu1 .row3 .imgmenu4 img,
+  .menu1 .row4 .imgmenu5 img {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 1rem;
+    display: block;
+  }
+}
+
